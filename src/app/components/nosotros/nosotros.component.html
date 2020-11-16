@@ -1,0 +1,53 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="mt-5">
+                <h3>Edite la Informacion de Nosotros</h3>
+                    <form [formGroup]="nosotros" (ngSubmit)="editarNosotros()" ngNativeValidate>
+                            <div class="form-group">
+                              <label for="exampleFormControlInput1">Titulo a Mostrar</label>
+                              <input type="text" class="form-control" formControlName="titulo" name="titulo" placeholder="titulo nosotros">
+                            </div>                      
+                            <div class="form-group">
+                              <label for="exampleFormControlTextarea1">Texto a Mostrar</label>
+                              <textarea class="form-control" formControlName="texto" name="texto" rows="6"></textarea>
+                            </div>
+                            <div class="form-group mb-5">
+                                <img *ngIf="ImagenTemp" [src]="ImagenTemp" class="w-50" alt="">
+                                  <img *ngIf="imgTemp" [src]="imgTemp | imagen:'contenido'" class="w-50" alt="">
+                                  <label for="exampleFormControlFile1">Agregue la Imagen de Nosotros</label>
+                                  
+                                  <input type="file" formControlName="imagen" class="form-control-file" (change)="seleccionImagen($event.target.files[0])" required>
+                                </div>
+                             <button type="submit" mdbBtn color="indigo" mdbWavesEffect>Editar</button>
+                          </form>
+            </div>             
+        </div>
+        <div class="col-sm-6">
+            <div class="text-center mt-5">
+
+                <blockquote class="blockquote bq-primary">
+                    <p class="bq-title">{{informacion.titulo}}</p>
+                    <p>{{informacion.texto}}
+                    </p>
+                    <img [src]="informacion.imagen | imagen:'nosotros'" height="200" alt="">
+                  </blockquote>             
+            </div>
+        </div>
+    </div>
+</div>
+
+<div mdbModal #modalupload="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm modal-info modal-notify" role="document">
+          <div class="modal-content">
+            <div class="modal-header">        
+              <h4 class="modal-title w-100" id="myModalLabel">Subiendo Imagen</h4>
+            </div>
+            <div class="modal-body text-center">
+                <div class="spinner-border text-success" style="width: 3rem; height: 3rem;" role="status">
+                    <span class="sr-only">Loading...</span>
+                  </div>       
+            </div>     
+          </div>
+        </div>
+      </div>

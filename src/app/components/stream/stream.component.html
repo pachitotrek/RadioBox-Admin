@@ -1,0 +1,77 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="mt-3">
+        <div class="text-center">
+          <h2 class="indigo-text">Configure su Video Streaming</h2>
+        </div>
+        <form [formGroup]="videoForm" (ngSubmit)="setVideoUrl()" ngNativeValidate>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Codigo del Video</span>
+            </div>
+            <textarea class="form-control" name="video" formControlName="url" aria-label="With textarea"
+              required></textarea>
+          </div>
+          <div class="text-center">
+            <button type="submit" mdbBtn color="indigo" mdbWavesEffect>Configurar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="mt-3 text-center indigo-text">
+        <h4 class="h4-responsive">
+          <strong>Video Streaming </strong>
+        </h4>
+        <div class="text-center">
+            <vg-player>
+                <video #media #vgHls="vgHls" [vgMedia]="media"
+                  [vgHls]="url_Video" id="singleVideo" controls
+                  crossorigin>
+                </video>
+              </vg-player>
+
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="mt-5">
+        <div class="text-center">
+          <h2 class="indigo-text">Configure su Audio Streaming</h2>
+        </div>
+        <form [formGroup]="audioForm" (ngSubmit)="setAudioUrl()" ngNativeValidate>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Url del AudioStreaming</span>
+            </div>
+            <textarea class="form-control" formControlName="url" aria-label="With textarea" required></textarea>
+          </div>
+          <div class="text-center">
+            <button type="submit" mdbBtn color="indigo" mdbWavesEffect>Configurar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="mt-5 text-center">
+        <div class="indigo-text">
+          <h4 class="h4-responsive">
+            <strong>Audio Streaming </strong>
+          </h4>
+        </div> 
+        <div class="mt-5 mb-5">
+          <vg-player style="height: 50px;width: 50px;border-radius: 84px 84px 84px 84px;background-color: black">
+            <vg-controls>
+              <vg-play-pause></vg-play-pause>
+            </vg-controls>
+
+            <audio #reproductor #vgHls="vgHls" [vgMedia]="reproductor" id="myAudio"
+              [vgHls]="url_Sonido" crossorigin>
+            </audio>
+          </vg-player>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

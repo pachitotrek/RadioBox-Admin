@@ -1,0 +1,49 @@
+<!--Navbar-->
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark deep-purple darken-4" [containerInside]="true">
+
+  <!-- Navbar brand -->
+  <mdb-navbar-brand><a class="navbar-brand" href="#">
+    <img src="../../../assets/img/logo.png" alt="" height="50" >
+  </a></mdb-navbar-brand>
+
+  <!-- Collapsible content -->
+  <links>
+
+    <!-- Links -->
+    <ul class="navbar-nav mr-auto">     
+      <li class="nav-item">
+        <a class="nav-link waves-light" [routerLink]="[ '/home/stream' ]" routerLinkActive="active" mdbWavesEffect>Stream</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link waves-light" [routerLink]="[ '/home/calendario' ]" routerLinkActive="active" mdbWavesEffect>Calendario</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link waves-light" [routerLink]="[ '/home/nosotros' ]" routerLinkActive="active" mdbWavesEffect>Nosotros</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link waves-light" [routerLink]="[ '/home/publicidad' ]" routerLinkActive="active" mdbWavesEffect>Publicidad</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link waves-light" mdbWavesEffect [routerLink]="[ '/home/redes' ]" routerLinkActive="active">Redes sociales</a>
+        </li>
+     
+    </ul>
+    <!-- Links -->
+
+    <ul class="navbar-nav ml-auto nav-flex-icons">    
+      <li class="nav-item">
+        <a class="nav-link">
+          <div class="btn-group" mdbDropdown>
+            <mdb-icon fas icon="user" mdbDropdownToggle></mdb-icon>
+            <div class="dropdown-menu dropdown-menu-right dropdown-primary">              
+              <a class="dropdown-item" (click)="login.Logout()">Cerrar Sesion</a>              
+            </div>
+          </div>
+        </a>
+      </li>
+    </ul>
+  </links>
+  <!-- Collapsible content -->
+
+</mdb-navbar>
+<!--/.Navbar-->

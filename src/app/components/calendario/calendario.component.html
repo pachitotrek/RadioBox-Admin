@@ -1,0 +1,80 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <form class="mt-5" [formGroup]="calendario" (ngSubmit)="agregarEvento()" ngNativeValidate>
+              <div class="text-center">
+                <h3>Ingrese un nuevo evento</h3>
+              </div>
+                <div class="form-group">
+                  <label for="exampleFormControlInput1">fecha del evento</label>
+                  <input type="date" class="form-control" id="" placeholder="" formControlName="fecha" name="fecha" required>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">hora del evento</label>
+                    <input type="text" class="form-control" placeholder="00:00 - 2:00" formControlName="hora" name="hora" required>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Titulo del evento</label>
+                    <input type="text" class="form-control" placeholder="titulo" formControlName="titulo" name="titulo" required >
+                </div>                  
+                <div class="form-group">
+                  <label for="exampleFormControlTextarea1">Breve descripcion del evento</label>
+                  <textarea class="form-control" rows="2" formControlName="descripcion" name="descripcion" required ></textarea>
+                </div>
+                <div class="form-group mb-5">
+                    <img *ngIf="ImagenTemp" [src]="ImagenTemp" class="w-50" alt="">
+                      <img *ngIf="imgTemp" [src]="imgTemp | imagen:'eventos'" class="w-50" alt="">
+                      <label for="exampleFormControlFile1">Agregue la Imagen de Nosotros</label>
+                      
+                      <input type="file" formControlName="imagen" class="form-control-file" (change)="seleccionImagen($event.target.files[0])" required>
+                    </div>
+                  <button type="submit" mdbBtn color="success" mdbWavesEffect>Agregar</button>
+                  <button type="button" mdbBtn color="indigo" (click)="actualizarEvento()" mdbWavesEffect>actualizar</button>
+              </form>
+        </div>
+        <div class="col-sm-12 mt-5">
+            <table mdbTable>
+                <thead>
+                  <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">fecha</th>
+                    <th scope="col">Hora</th>
+                    <th scope="col">Titulo</th>
+                    <th scope="col">Descripcion</th>
+                    <th scope="col">Imagen</th>
+                    <th scope="col">Editar</th>
+                    <th scope="col">Eliminar</th>
+                  </tr>                
+                </thead>
+                <tbody>
+                  <tr mdbTableCol *ngFor="let evento of eventos">
+                    <th scope="row">{{evento.id}}</th>
+                    <td>{{evento.fecha | date}}</td>
+                    <td>{{evento.hora}}</td>
+                    <td>{{evento.titulo}}</td>
+                    <td>{{evento.descripcion}}</td>
+                    <td><img [src]="evento.imagen | imagen:'eventos'" height="100" alt=""></td>
+                    <td><button type="submit" mdbBtn color="indigo" size="sm" (click)="seleccionarEvento(evento)" mdbWavesEffect>Editar</button></td>
+                    <td><button type="submit" mdbBtn color="danger" size="sm" (click)="eliminarEvento(evento.id)" mdbWavesEffect>Eliminar</button></td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>
+
+
+<div mdbModal #modalupload="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm modal-info modal-notify" role="document">
+          <div class="modal-content">
+            <div class="modal-header">        
+              <h4 class="modal-title w-100" id="myModalLabel">Subiendo Imagen</h4>
+            </div>
+            <div class="modal-body text-center">
+                <div class="spinner-border text-success" style="width: 3rem; height: 3rem;" role="status">
+                    <span class="sr-only">Loading...</span>
+                  </div>       
+            </div>     
+          </div>
+        </div>
+      </div>
